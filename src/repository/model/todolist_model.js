@@ -1,10 +1,10 @@
 const { Model, DataTypes } = require("sequelize")
-const sequelize = require("../config/config")
+const sequelize = require("../../../pkg/sequelize")
 
 class Todolist extends Model {
 }
 
-cart.init(
+Todolist.init(
   {
     id: {
         type: DataTypes.INTEGER,
