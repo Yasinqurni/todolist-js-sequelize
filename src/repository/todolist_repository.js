@@ -1,21 +1,21 @@
 class TodolistRepository {
     constructor(todolistModel) {
-        this.todolistModel = todolistModel
+        this.todolistmodel = todolistModel
     }
 
     async CreateTodolist(todolist) {
-        return this.todolistModel.create({
+        return this.todolistmodel.create({
             tags: todolist.tags,
             body: todolist.body
         })
     }
 
     async GetTodolist() {
-        return this.todolistModel.findAll()
+        return this.todolistmodel.findAll()
     }
 
     async GetTodolistByID(id) {
-        return this.todolistModel.findOne({
+        return this.todolistmodel.findOne({
             where: {
                 id: id
             }
@@ -23,7 +23,7 @@ class TodolistRepository {
     }
 
     async UpdateTodolist(id, data) {
-        return this.todolistModel.update(data, {
+        return this.todolistmodel.update(data, {
             where: { 
                 id: id
             }
@@ -31,7 +31,7 @@ class TodolistRepository {
     }
 
     async DeleteTodolist(id) {
-        return this.todolistModel.destroy({
+        return this.todolistmodel.destroy({
             where: { 
                 id: id
             }

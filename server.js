@@ -5,14 +5,16 @@ const routes = require('./src/init')
 dotenv.config({path: `.env`})
 
 const port = process.env.PORT
+const host = process.env.HOST
 
 const init = async () => {
     const server = Hapi.server({
         port: port,
-        host: 'localhost'
+        host: host
     });
 
-    server.route(routes);
+    const routeslist = routes.getRoutes()
+    server.route(routeslist );
 
     await server.start();
     console.log('Server running on %s', server.info.uri);

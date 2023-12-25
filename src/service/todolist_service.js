@@ -1,26 +1,26 @@
 class TodolistService {
     constructor(todolistRepository) {
-        this.todolistRepository = todolistRepository
+        this.todolistrepository = todolistRepository
     }
 
     async CreateTodolist(todolist) {
-        return await this.todolistRepository.CreateTodolist(todolist)
+        return await this.todolistrepository.CreateTodolist(todolist)
     }
 
     async GetTodolist() {
-        return await this.todolistRepository.GetTodolist()
+        return await this.todolistrepository.GetTodolist()
     }
 
     async GetTodolistByID(id) {
-        return await this.todolistRepository.GetTodolistByID(id)
+        return await this.todolistrepository.GetTodolistByID(id)
     }
 
     async UpdateTodolist(id, data) {
-        return await this.todolistRepository.UpdateTodolist(id, data)
+        return await this.todolistrepository.UpdateTodolist(id, data)
     }
 
     async DeleteTodolist(id) {
-        return await this.todolistRepository.DeleteTodolist(id)
+        return await this.todolistrepository.DeleteTodolist(id)
     }
 }
 

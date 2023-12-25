@@ -3,7 +3,7 @@ const { todolistDecoratorList, todolistDecorator } = require('../decorator/todol
 class TodolistHandler {
 
     constructor(todolistService) {
-        this.todolistService = todolistService
+        this.todolistservice = todolistService
     }
     
     async CreateTodolist(request, h) {
@@ -14,7 +14,7 @@ class TodolistHandler {
                 throw new Error('please insert body') 
             }
 
-            const isCreate = await this.todolistService.CreateTodolist(payload)
+            const isCreate = await this.todolistservice.CreateTodolist(payload)
 
             if(!isCreate) {
                 throw new Error('Failed to create todolist');
@@ -23,14 +23,15 @@ class TodolistHandler {
 
         } catch(err) {
 
-            return h.response({ status: 'error', message: err}).code(500);
+            console.error(err)
+            return h.response({ status: 'error', message: err.message}).code(500);
 
         }
     }
 
     async GetTodolist(request, h)  {
         try {
-            const todolists = await this.todolistService.GetTodolist()
+            const todolists = await this.todolistservice.GetTodolist()
 
             const result = await todolistDecoratorList(todolists)
 
@@ -39,7 +40,8 @@ class TodolistHandler {
 
         } catch(err) {
 
-            return h.response({ status: 'error', message: err}).code(500);
+            console.error(err)
+            return h.response({ status: 'error', message: err.message}).code(500);
 
         }
     }
@@ -53,7 +55,7 @@ class TodolistHandler {
                 throw new Error("Params not found")
             }
 
-            const todolist = await this.todolistService.GetTodolistByID(id)
+            const todolist = await this.todolistservice.GetTodolistByID(id)
 
             if (todolist.length == 0) {
                 throw new Error("Todolist not found")
@@ -65,7 +67,8 @@ class TodolistHandler {
 
         } catch(err) {
 
-            return h.response({ status: 'error', message: err}).code(500);
+            console.error(err)
+            return h.response({ status: 'error', message: err.message}).code(500);
 
         }
     }
@@ -80,7 +83,7 @@ class TodolistHandler {
                 throw new Error("Params or body not found")
             }
 
-            const isUpdate = this.todolistService.UpdateTodolist(id, data)
+            const isUpdate = this.todolistservice.UpdateTodolist(id, data)
 
             if(!isUpdate) {
                 throw new Error('Failed to update todolist');
@@ -91,7 +94,8 @@ class TodolistHandler {
 
         } catch(err) {
 
-            return h.response({ status: 'error', message: err}).code(500);
+            console.error(err)
+            return h.response({ status: 'error', message: err.message}).code(500);
 
         }
     }
@@ -105,7 +109,7 @@ class TodolistHandler {
                 throw new Error("Params not found")
             }
 
-            const isDelete = this.todolistService.DeleteTodolist(id) 
+            const isDelete = this.todolistservice.DeleteTodolist(id) 
 
             if(!isUpdate) {
                 throw new Error('Failed to delete todolist');
@@ -116,7 +120,8 @@ class TodolistHandler {
 
         } catch(err) {
 
-            return h.response({ status: 'error', message: err}).code(500);
+            console.error(err)
+            return h.response({ status: 'error', message: err.message}).code(500);
 
         }
     }
