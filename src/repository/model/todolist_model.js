@@ -11,12 +11,12 @@ cart.init(
         primaryKey: true,
         autoIncrement: true
       }, 
-      tags: {
+    tags: {
         type: DataTypes.STRING,
         allowNull: false,
         field: 'user_id'
       },
-      body: {
+    body: {
         type: DataTypes.STRING,
         allowNull: false,
       },
