@@ -6,12 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "watch": "npx nodemon server.js"
+    "watch": "npx nodemon server.js",
+    "create-db": "npx dbmate create",
+    "migrate-up": "npx dbmate up",
+    "migrate-down": "npx dbmate down"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@hapi/hapi": "^21.3.2",
+    "dbmate": "^2.10.0",
     "dotenv": "^16.3.1",
     "mysql2": "^3.6.5",
     "nodemon": "^3.0.2",

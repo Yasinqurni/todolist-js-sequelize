@@ -10,4 +10,3 @@ CREATE TABLE IF NOT EXISTS todolists (
 
 -- migrate:down
 DROP TABLE todolists;
-

@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  todolist:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 9182:5151
+    depends_on:
+      - todolist_db
+      - todolist_migration
+    env_file:
+      - .env
+    volumes:
+      - todolist_volume:/app/node_modules
+      - .:/app
+
+  todolist_migration:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - todolist_db
+    env_file:
+      - .env
+    command: sh -c "npm run create-db && npm run migrate-up"
+    restart: on-failure
+
+  todolist_db:
+    image: mysql:8
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=12345678
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+
+
+volumes:
+  todolist_volume:

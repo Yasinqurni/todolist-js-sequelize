@@ -6,6 +6,13 @@ class TodolistRoutes {
         this.routes = [
             {
                 method: 'GET',
+                path: '/healt',
+                handler: (request, h) => {
+                    return h.response({ status: 'success', message: 'Server is running' }).code(200);
+                }
+            },
+            {
+                method: 'GET',
                 path: '/todolist',
                 handler: todolistHandler.GetTodolist
             },
