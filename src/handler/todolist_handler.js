@@ -4,6 +4,12 @@ class TodolistHandler {
 
     constructor(todolistService) {
         this.todolistservice = todolistService
+
+        this.CreateTodolist = this.CreateTodolist.bind(this);
+        this.GetTodolist = this.GetTodolist.bind(this);
+        this.GetTodolistByID = this.GetTodolistByID.bind(this);
+        this.UpdateTodolist = this.UpdateTodolist.bind(this);
+        this.DeleteTodolist = this.DeleteTodolist.bind(this);
     }
     
     async CreateTodolist(request, h) {
@@ -51,13 +57,15 @@ class TodolistHandler {
 
             const id = request.params.id
 
+            console.log(id)
+
             if(id == undefined) {
                 throw new Error("Params not found")
             }
 
             const todolist = await this.todolistservice.GetTodolistByID(id)
 
-            if (todolist.length == 0) {
+            if (todolist == null) {
                 throw new Error("Todolist not found")
             }
 
@@ -100,7 +108,7 @@ class TodolistHandler {
         }
     }
 
-    async DeleteTodolist(id) {
+    async DeleteTodolist(request, h) {
         try {
 
             const id = request.params.id
@@ -111,7 +119,7 @@ class TodolistHandler {
 
             const isDelete = this.todolistservice.DeleteTodolist(id) 
 
-            if(!isUpdate) {
+            if(!isDelete) {
                 throw new Error('Failed to delete todolist');
             }
 

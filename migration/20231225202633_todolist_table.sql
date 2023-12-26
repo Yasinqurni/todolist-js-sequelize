@@ -1,5 +1,5 @@
 -- migrate:up
-CREATE TABLE IF NOT EXISTS todolist (
+CREATE TABLE IF NOT EXISTS todolists (
   id INT PRIMARY KEY AUTO_INCREMENT,
   tags VARCHAR(26) NOT NULL,
   body TEXT NOT NULL,
@@ -9,5 +9,5 @@ CREATE TABLE IF NOT EXISTS todolist (
 );
 
 -- migrate:down
-DROP TABLE todolist;
+DROP TABLE todolists;
 

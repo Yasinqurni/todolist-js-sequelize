@@ -14,7 +14,6 @@ Todolist.init(
     tags: {
         type: DataTypes.STRING,
         allowNull: false,
-        field: 'user_id'
       },
     body: {
         type: DataTypes.STRING,
